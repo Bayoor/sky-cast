@@ -28,7 +28,14 @@ const SearchBar = ({
   const handleSubmit = (e) => {
     e.preventDefault();
     if (query.trim()) {
-      onSearch(query.trim());
+      // Create a manual location object for search
+      const manualLocation = {
+        name: query.trim(),
+        country: '',
+        lat: null,
+        lon: null
+      };
+      onLocationSelect(manualLocation);
       setShowSuggestions(false);
       setSelectedIndex(-1);
     }
@@ -204,8 +211,14 @@ const SearchBar = ({
               type="submit" 
               disabled={!query.trim()}
               size="small"
+              className={styles.searchButton}
             >
-              {isSearching ? <LoadingSpinner size="small" /> : 'Search'}
+              {isSearching ? (
+                <>
+                  <LoadingSpinner size="small" inline={true} />
+                  <span>Search</span>
+                </>
+              ) : 'Search'}
             </Button>
           </div>
         </div>

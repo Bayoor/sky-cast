@@ -85,6 +85,8 @@
 .small {
   padding: var(--spacing-xs) var(--spacing-sm);
   font-size: var(--font-size-sm);
+  min-width: 60px;
+  white-space: nowrap;
 }
 
 .medium {
@@ -102,4 +104,21 @@
   opacity: 0.5;
   cursor: not-allowed;
   pointer-events: none;
+}
+
+/* Responsive button sizing */
+@media (max-width: 640px) {
+  .small {
+    padding: var(--spacing-xs) var(--spacing-sm);
+    min-width: 50px;
+    font-size: var(--font-size-xs);
+  }
+}
+
+@media (max-width: 480px) {
+  .small {
+    padding: 2px var(--spacing-xs);
+    min-width: 40px;
+    font-size: var(--font-size-xs);
+  }
 }
